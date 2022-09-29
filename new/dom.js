@@ -1,12 +1,9 @@
-//console.dir(document.URL);
-//console.log(document.title);
-//console.log(document.all[10]);
-//console.log(document.body);
-var headerTitle=document.getElementById("header-title");
-var header=document.getElementById("main-header");
-console.log(headerTitle);
-header.style.borderBottom="solid 5px #000";
-var header2=document.getElementsByClassName("title");
-header2[0].style.fontWeight="bold";
-header2[0].style.color="Green";
+
+var items=document.getElementsByClassName("list-group-item");
+console.log(items);
+items[2].style.background="Green";
+for(var i=0;i<items.length;i++)
+{
+    items[i].style.fontWeight="bold";
+}
 
