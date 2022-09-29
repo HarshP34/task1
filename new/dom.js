@@ -24,6 +24,7 @@ function additem(e)
    deleteBtn.appendChild(document.createTextNode('X'));
    li.appendChild(deleteBtn);
    var editBtn=document.createElement('button');
+   //edit button
    editBtn.className='btn btn- btn-sm float-right edit';
    editBtn.appendChild(document.createTextNode('edit'));
    li.appendChild(editBtn);
