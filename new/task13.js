@@ -1,7 +1,6 @@
 const myForm=document.querySelector('#my-form');
 const nameInput=document.querySelector('#name');
 const emailInput=document.querySelector('#email');
-const msg=document.querySelector('.msg');
 const userList=document.querySelector('#users');
 
 
@@ -11,13 +10,11 @@ function onSubmit(e)
     e.preventDefault();
     if(nameInput.value===''||emailInput.value==='')
     {
-        msg.classList.add('error');
-        msg.innerHTML="Please Enter All Fields";
-        setTimeout(()=> msg.remove(),3000);
+        alert('Please fill all fields')
     }
     else
     {
-        if(localStorage.getItem(emailInput.value))
+      if(localStorage.getItem(emailInput.value))
         {
         for(var i=0;i<document.querySelectorAll('.item').length;i++)
         {
@@ -29,20 +26,25 @@ function onSubmit(e)
               name:nameInput.value,
               email:emailInput.value
         }
-       
-       
       let myObj_serialized=JSON.stringify(myObj);
      localStorage.setItem(myObj.email,myObj_serialized);
      let myObj_deserialized=JSON.parse(localStorage.getItem(myObj.email));
      var li=document.createElement('li');
      li.className='item';
      li.appendChild(document.createTextNode(localStorage.getItem(myObj.email)));
-     var deleteBtn=document.createElement('delete');
+     var deleteBtn=document.createElement('button');
      deleteBtn.className='btn';
+     deleteBtn.style.background='tomato';
+     deleteBtn.style.color='white';
+     deleteBtn.style.width='100px';
+     deleteBtn.style.height='50px';
      deleteBtn.appendChild(document.createTextNode('delete'));
      li.appendChild(deleteBtn);
-     var editBtn=document.createElement('edit');
+     var editBtn=document.createElement('button');
      editBtn.className='btn';
+     editBtn.style.background='skyblue';
+     editBtn.style.width='100px';
+     editBtn.style.height='50px';
      editBtn.appendChild(document.createTextNode('edit'));
      li.appendChild(editBtn);
      userList.appendChild(li);
@@ -55,8 +57,17 @@ function onSubmit(e)
             if(confirm('Are you Sure?'))
         {
             var li=e.target.parentElement;
-           localStorage.removeItem(emailInput.value);
-           userList.removeChild(li);
+         for(var i=0;i<document.querySelectorAll('.item').length;i++)
+         {
+            if(li==document.querySelectorAll('.item')[i])
+            {
+              myObj_deserialized2=JSON.parse(document.querySelectorAll('.item')[i].firstChild.textContent)
+              localStorage.removeItem(myObj_deserialized2.email);
+              myForm.querySelector('#name').value='';
+              myForm.querySelector('#email').value='';
+            }
+         }
+         userList.removeChild(li);
         }
         }
     }
@@ -66,16 +77,15 @@ function onSubmit(e)
         if(e.target==editBtn)
         {
            var  li=e.target.parentElement;
-           for(var i=0;i<userList.getElementsByClassName('item').length;i++)
-           {
-            if(userList.getElementsByClassName('item')[i]==li)
-            {
-                let myObj_deserialized1=JSON.parse(userList.getElementsByClassName('item')[i].firstChild.textContent);
-                myForm.querySelector('#name').value=myObj_deserialized1.name;
-                myForm.querySelector('#email').value=myObj_deserialized1.email;
-                localStorage.removeItem(myObj_deserialized1.email);
+          for(var i=0;i<document.querySelectorAll('.item').length;i++)
+          {
+            if(li==document.querySelectorAll('.item')[i]){
+           var myObj_deserialized1=JSON.parse(document.querySelectorAll('.item')[i].firstChild.textContent)
+            myForm.querySelector('#name').value=myObj_deserialized1.name;
+            myForm.querySelector('#email').value=myObj_deserialized1.email;
+            localStorage.removeItem(myObj_deserialized1.email);
             }
-        }
+          }
             userList.removeChild(li);
          }
         }
