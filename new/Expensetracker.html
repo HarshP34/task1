@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    
+    <form id="my-form">
+        <label for="amount">Choose expense amount:</label>
+        <input type="number" id="amount" name="amount">
+        <label for="discription">Discription:</label>
+        <input type="text" id="discription" name="discription">
+        <label for="category">Type of expese:</label>
+       <select name="category" id="catogary">
+    <option value="Grocary">Grocary</option>
+    <option value="household">household</option>
+    <option value="education">education</option>
+    <option value="other">other</option>
+       </select>
+       <span class="output"></span>
+       <input type="submit" value="Add Expense">
+       <ul id="users"></ul>
+    </form>
+
+    <script src="Expensetracker.js"></script>
+
+</body>
+</html>
