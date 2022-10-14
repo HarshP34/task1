@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="my-form">
+        <label for="amount">Amount:</label> 
+        <input type="number" name="amount" id="amount">
+        <label for="description">Description:</label> 
+        <input type="text" name="description" id="description">
+        <label for="category">Type Of Expenses:</label> 
+       <select name="category" id="category">
+        <option value="Grocary">Grocary</option>
+        <option value="Household">Household</option>
+        <option value="Education">Education</option>
+        <option value="Other">Other</option>
+       </select>
+       <span class="output"></span>
+       <input type="submit" value="Add Expenses">
+       <ul id="users"></ul>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+    <script src="ExpenseTracker.js"></script>
+</body>
+</html>
